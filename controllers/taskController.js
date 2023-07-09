@@ -91,6 +91,11 @@ const updatefn = async (req, res) => {
     if (req.params.id == "" || req.params.id == null || (!req.params.id)) {
         return res.status(400).json({ msg: "Fail", data: "_id is INVALID" });
     }
+    if(req.body.status==1){
+        req.body.status="Active"
+    }else{
+        req.body.status="Deactive"
+    }
     
     if (req.body) {
 

@@ -68,12 +68,13 @@ const login1fn = async (req, res, next) => {
             if (isMatch) {
                 const data = {
                     result: {
-                        _id: result._id
+                        _id: result._id,
                     }
                 }
+                const username=result.name
                 const authtoken = jwt.sign(data, JWTCODE, { expiresIn: "1h" }); ///expire in 1 hour
                 // const authtoken = jwt.sign(data, JWTCODE); 
-                res.status(200).json({ msg: "Success", token: `Bearer ${authtoken}`,username: req.body.name });
+                res.status(200).json({ msg: "Success", token: `Bearer ${authtoken}`,username: `${username}` });
 
             }
             else {
